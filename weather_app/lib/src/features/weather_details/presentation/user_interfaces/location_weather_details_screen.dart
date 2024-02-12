@@ -43,26 +43,24 @@ class _LocationWeatherDetailsScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("${widget.location.name}, ${widget.location.country}",
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600)),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Center(
-                  child: Column(
-                children: [
-                  Text("${widget.location.name}, ${widget.location.country}",
-                      style: const TextStyle(
-                          fontSize: 24, fontWeight: FontWeight.w600)),
-                  const Text(
-                    'Now',
-                    style: TextStyle(fontSize: 14),
-                  ),
-                  const SizedBox(
-                    height: 72,
-                  )
-                ],
-              )),
+              const Text(
+                'Now',
+                style: TextStyle(fontSize: 14),
+              ),
+              const SizedBox(
+                height: 72,
+              ),
               BlocConsumer<WeatherDetailsCubit, ApplicationState>(
                 bloc: _weatherDetailsCubit,
                 listener: (context, state) {
@@ -90,6 +88,7 @@ class _LocationWeatherDetailsScreenState
   Widget _buildSuccessState() {
     return Expanded(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.network(
             'https:${_forecast!.currentWeather.condition.icon}',
@@ -129,6 +128,7 @@ class _LocationWeatherDetailsScreenState
             padding:
                 const EdgeInsets.only(right: 16.0, left: 16.0, bottom: 32.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ..._forecast!.forecastWeather.forecastday.map((e) {
                   final parsedDate = DateTime.parse(e.date);
