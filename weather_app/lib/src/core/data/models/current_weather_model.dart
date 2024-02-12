@@ -10,7 +10,7 @@ class CurrentWeatherModel {
   @JsonKey(name: 'temp_f')
   final double tempInF;
   @JsonKey(name: 'is_day')
-  final bool isDay;
+  final int isDay;
   final ConditionModel condition;
   @JsonKey(name: 'wind_mph')
   final double windMPH;

@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:weather_app/src/core/data/models/forecast_response_model.dart';
 import 'package:weather_app/src/core/data/models/location_model.dart';
 import 'package:weather_app/src/core/data/repositories/weather_repository/weather_repository.dart';
 
@@ -40,10 +42,14 @@ class WeatherRepositoryImpl implements WeatherRepository {
     }
   }
 
-  Future<void> fetchLocationWeatherDetails(String location) async {
+  @override
+  Future<ForecastResponseModel?> getWeatherForecast(String location) async {
     final response = await _dio.get(
-        'https://api.weatherapi.com/v1/forecast.json?key=82d47dd3dcc341b5bf9223445231707&q=porto portugal&days=5&aqi=no&alerts=no');
+        'https://api.weatherapi.com/v1/forecast.json?key=82d47dd3dcc341b5bf9223445231707&q=$location&days=5&aqi=no&alerts=no',
+        options: Options(method: 'GET'));
 
-    if (response.statusCode == 200) {}
+    if (response.statusCode == 200) {
+      return ForecastResponseModel.fromJson(response.data);
+    }
   }
 }

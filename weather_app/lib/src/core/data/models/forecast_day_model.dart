@@ -1,3 +1,4 @@
+import 'package:weather_app/src/core/data/models/day_weather_data_model.dart';
 import 'package:weather_app/src/core/data/models/weather_condition_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -5,24 +6,12 @@ part 'forecast_day_model.g.dart';
 
 @JsonSerializable()
 class ForecastDayModel {
-  @JsonKey(name: 'maxtemp_c')
-  final double maxTempInC;
-  @JsonKey(name: 'maxtemp_f')
-  final double maxTempInF;
-  @JsonKey(name: 'mintemp_c')
-  final double minTempInC;
-  @JsonKey(name: 'mintemp_f')
-  final double minTempInF;
-  final ConditionModel condition;
-  final double uv;
+  final String date;
+  final DayWeatherDataModel day;
 
   const ForecastDayModel({
-    required this.condition,
-    required this.maxTempInC,
-    required this.maxTempInF,
-    required this.minTempInC,
-    required this.minTempInF,
-    required this.uv,
+    required this.date,
+    required this.day,
   });
 
   factory ForecastDayModel.fromJson(Map<String, dynamic> json) =>

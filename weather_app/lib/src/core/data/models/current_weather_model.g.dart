@@ -10,7 +10,7 @@ CurrentWeatherModel _$CurrentWeatherModelFromJson(Map<String, dynamic> json) =>
     CurrentWeatherModel(
       condition:
           ConditionModel.fromJson(json['condition'] as Map<String, dynamic>),
-      isDay: json['is_day'] as bool,
+      isDay: json['is_day'] as int,
       tempInC: (json['temp_c'] as num).toDouble(),
       tempInF: (json['temp_f'] as num).toDouble(),
       uv: (json['uv'] as num).toDouble(),
