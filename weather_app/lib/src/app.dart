@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/src/core/data/models/location_model.dart';
+import 'package:weather_app/src/features/map/map_ui.dart';
 import 'package:weather_app/src/features/weather_details/presentation/user_interfaces/location_weather_details_screen.dart';
 import 'package:weather_app/src/features/home/presentation/user_interfaces/home_screen.dart';
 
@@ -62,7 +63,7 @@ class MyApp extends StatelessWidget {
                 );
 
               default:
-                return const HomeScreen();
+                return const MapUI();
             }
           },
         );
